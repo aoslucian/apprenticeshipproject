@@ -6,6 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
 import ExistingCustomer from '../components/ExistingCustomer';
+import DeliveryAdress from "~/components/DeliveryAdress";
 
 
 const Delivery: NextPage = () => {
@@ -19,7 +20,7 @@ const Delivery: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         
-        <ExistingCustomer/>
+        <DeliveryAdress />
     
     </>
   );
