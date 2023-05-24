@@ -5,7 +5,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
 import ExistingCustomer from '../components/ExistingCustomer';
-import Drinks from "~/components/menu/Drinks";
+import Drinks from "~/components/menu/Drinks/Drinks";
+
 
 
 const OldCustomer: NextPage = () => {

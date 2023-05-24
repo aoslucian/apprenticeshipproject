@@ -4,7 +4,8 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
-import Kebab from "~/components/menu/Kebab";
+import Kebab from "~/components/menu/Kebab/Kebab";
+
 
 
 const OldCustomer: NextPage = () => {

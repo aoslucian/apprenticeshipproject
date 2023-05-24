@@ -4,7 +4,8 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
-import Starters from "~/components/menu/Starters";
+import Starters from "~/components/menu/Starters/Starters";
+
 
 const OldCustomer: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
