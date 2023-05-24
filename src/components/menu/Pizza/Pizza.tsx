@@ -13,10 +13,10 @@ export default function Pizza() {
         <p className="font-bold text-2xl pl-3">Regular</p>
          {regularPizza.map((item) => (
            <div key={item.title} className="pb-6 border-2 border-white rounded-xl p-5 m-3 h-32 items-center flex-col">
-            <p>{item.title}</p>
+             <p className="font-bold">{item.title}</p>
             <p>{item.ingredients}</p>
             <p> {item.regular} </p>
- 
+            <p className="font-bold">{item.price} </p>
           </div>
         ))}
         </div>
@@ -25,9 +25,10 @@ export default function Pizza() {
           <p className="font-bold text-2xl pl-3">Large</p>
         {largePizza.map((item) => (
             <div key={item.title} className="pb-6 border-2 border-white rounded-xl p-5 m-3 h-32 items-center flex-col">
-            <p>{item.title}</p>
+            <p className="font-bold">{item.title}</p>
             <p>{item.ingredients}</p>
             <p> {item.large}</p>
+            <p className="font-bold"> {item.price} </p>
           </div>
         ))}
         </div>

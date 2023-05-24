@@ -15,6 +15,12 @@ export const drinks = [
     {
       // img: '/images/main/Pizza.webp',
       alt :"drink",
+      title:"Fanta-lemon",
+      price:"£1.5"
+    },
+    {
+      // img: '/images/main/Pizza.webp',
+      alt :"drink",
       title:"Sprite",
       price:"£1.5"
     },
