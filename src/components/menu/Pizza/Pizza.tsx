@@ -8,14 +8,14 @@ export default function Pizza() {
         Back to Menu
       </Link>
 
-      <div className="mx-auto max-w-7xl  overflow-hidden p-10  grid grid-cols-2">
+      <div className="mx-auto max-w-7xl overflow-hidden p-10 grid grid-cols-2">
        <div>
         <p className="font-bold text-2xl pl-3">Regular</p>
          {regularPizza.map((item) => (
-           <div key={item.title} className="pb-6 border-2 border-white rounded-xl p-5 m-3 h-32 items-center flex-col">
+           <div key={item.title} className="pb-6 border-2 border-white rounded-xl cursor-pointer p-5 m-3 h-32 items-center flex-col">
              <p className="font-bold">{item.title}</p>
             <p>{item.ingredients}</p>
-            <p> {item.regular} </p>
+            <p> {item.regular}</p>
             <p className="font-bold">{item.price} </p>
           </div>
         ))}
@@ -24,7 +24,7 @@ export default function Pizza() {
         <div>
           <p className="font-bold text-2xl pl-3">Large</p>
         {largePizza.map((item) => (
-            <div key={item.title} className="pb-6 border-2 border-white rounded-xl p-5 m-3 h-32 items-center flex-col">
+            <div key={item.title} className="pb-6 border-2 border-white cursor-pointer rounded-xl p-5 m-3 h-32 items-center flex-col">
             <p className="font-bold">{item.title}</p>
             <p>{item.ingredients}</p>
             <p> {item.large}</p>

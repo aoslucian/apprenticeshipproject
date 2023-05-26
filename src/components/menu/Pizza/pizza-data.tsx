@@ -7,7 +7,7 @@
       title: "Cheese & Tomato Pizza",
       ingredients:"Cheese,Tomato",
       regular:'Regular 10"',
-      price:'£3',
+      price:'£ 3',
     },
     
     {
@@ -16,7 +16,7 @@
       title: "Efes Pizza",
       ingredients:"Turkisk Pepperoni, Onions, Green Peppers, Fresh Tomato",
       regular:'Regular 10"',
-      price:'£5.4',
+      price:'£ 5.4',
     },
   
     {
@@ -25,7 +25,7 @@
       title: "Istanbul Vegetarian Pizza",
       ingredients:"Turkisk Pepperoni, Onions, Green Peppers, Fresh Tomato",
       regular:'Regular 10"',
-      price:'£6.00',
+      price:'£ 6.00',
     },
 
     {
@@ -34,7 +34,7 @@
       title: "Istanbul Special Pizza",
       ingredients:"Turkisk Pepperoni, Onions, Fresh Tomato, Chopped Doner Meat",
       regular:'Regular 10"',
-      price:'£6.00',
+      price:'£ 6.00',
     },
     {
       // img: '/images/main/Pizza.webp',
@@ -42,7 +42,7 @@
       title: "Kapadokya Pizza",
       ingredients:"Spicy Lamb, Chicken chunks, Onions and Turkish Pepperoni",
       regular:'Regular 10"',
-      price:'£5.40',
+      price:'£ 5.40',
     },
     {
       // img: '/images/main/Pizza.webp',
@@ -50,7 +50,7 @@
       title: "Yengen Pizza",
       ingredients:"Chicken chunks, Chunks of Pineaple, Fresh Mushroom & Turkish Sausage",
       regular:'Regular 10"',
-      price:'£5.40',
+      price:'£ 5.40',
 
     },
     {
@@ -59,7 +59,7 @@
       title: "Lazo Pizza ( Sea Food )",
       ingredients:"Anchoves, Prawns, Tuna, Onion & Black Olives",
       regular:'Regular 10"',
-      price:'£6.00',
+      price:'£ 6.00',
     },
     {
       // img: '/images/main/Pizza.webp',
@@ -67,7 +67,7 @@
       title: " Garlic Pizza",
       ingredients:" without Cheese",
       regular:'Regular 10"',
-      price:'£2.45',
+      price:'£ 2.45',
 
     },
 
@@ -84,7 +84,7 @@
             title: "Cheese & Tomato Pizza",
             ingredients:"Cheese,Tomato",
             large:'Large 12"',
-            price:'£4',
+            price:'£ 4',
           },
       {
         // img: '/images/main/Pizza.webp',
@@ -92,7 +92,7 @@
         title: "Efes Pizza",
         ingredients:"Turkisk Pepperoni, Onions, Green Peppers, Fresh Tomato",
         large:'Large 12"',
-        price:'£7.2',
+        price:'£ 7.2',
       },
     
       {
@@ -101,7 +101,7 @@
         title: "Istanbul Vegetarian Pizza",
         ingredients:"Turkisk Pepperoni, Onions, Green Peppers, Fresh Tomato",
         large:'Large 12"',
-        price:'£8.00',
+        price:'£ 8.00',
       },
   
       {
@@ -110,7 +110,7 @@
         title: "Istanbul Special Pizza",
         ingredients:"Turkisk Pepperoni, Onions, Fresh Tomato, Chopped Doner Meat",
         large:'Large 12"',
-        price:'£8.00',
+        price:'£ 8.00',
       },
       {
         // img: '/images/main/Pizza.webp',
@@ -118,7 +118,7 @@
         title: "Kapadokya Pizza",
         ingredients:"Spicy Lamb, Chicken chunks, Onions and Turkish Pepperoni",
         large:'Large 12"',
-        price:'£7.20',
+        price:'£ 7.20',
       },
       {
         // img: '/images/main/Pizza.webp',
@@ -126,7 +126,7 @@
         title: "Yengen Pizza",
         ingredients:"Chicken chunks, Chunks of Pineaple, Fresh Mushroom & Turkish Sausage",
         large:'Large 12"',
-        price:'£7.20',
+        price:'£ 7.20',
   
       },
       {
@@ -135,7 +135,7 @@
         title: "Lazo Pizza ( Sea Food )",
         ingredients:"Anchoves, Prawns, Tuna, Onion & Black Olives",
         large:'Large 12"',
-        price:'£8.00',
+        price:'£ 8.00',
   
       },
       {
@@ -144,7 +144,7 @@
         title: " Garlic Pizza",
         ingredients:" without Cheese",
         large:' Large 12"',
-        price:'£2.95',
+        price:'£ 2.95',
   
       },
   

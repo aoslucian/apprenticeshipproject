@@ -15,9 +15,9 @@ export default function Drinks() {
 
         <div className="grid grid-cols-3 mx-auto items-center h-32">
         {drinks.map((item) => (
-          <div key={item.title} className=" border-2 border-white rounded-xl p-8 m-3  flex flex-col items-center">
+          <div key={item.title} className=" border-2 border-white rounded-xl p-8 m-3 cursor-pointer flex flex-col items-center">
             <p className="font-bold pb-2"> {item.title}</p>
-            <p className="font-bold">  {item.price} </p>
+            <p className="font-bold">{item.price} </p>
       
           </div>
         ))}
