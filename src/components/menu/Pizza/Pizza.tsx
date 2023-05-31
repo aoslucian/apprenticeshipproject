@@ -1,8 +1,6 @@
 // import Link from "next/link";
 // import { regularPizza, largePizza } from "./pizza-data";
 
-
-
 // export default function Pizza() {
 //   return (
 //     <div className="flex flex-col bg-[#333] text-white">
@@ -39,7 +37,6 @@
 //   );
 // }
 
-
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -71,61 +68,74 @@ export default function Pizza() {
   return (
     <div className="flex grid-cols-2 flex-col bg-[#333] text-white">
       <div className="m-6 flex justify-between ">
-        <Link className="text-2xl p-2 mr-4 cursor-pointer border-2 border-transparent rounded-xl hover:border-orange-500  hover:text-orange-500" href="/new-order">
+        <Link
+          className="mr-4 cursor-pointer rounded-xl border-2 border-transparent p-2 text-2xl hover:border-orange-500  hover:text-orange-500"
+          href="/new-order"
+        >
           Back to Menu
         </Link>
-        <p className="text-2xl p-2 mr-4 cursor-pointer border-2 border-transparent rounded-xl hover:border-orange-500  hover:text-orange-500" onClick={handleBasketClick}>
+        <p
+          className="mr-4 cursor-pointer rounded-xl border-2 border-transparent p-2 text-2xl hover:border-orange-500  hover:text-orange-500"
+          onClick={handleBasketClick}
+        >
           Basket: {basket.length}
         </p>
       </div>
+<div className="grid grid-cols-6 border-4 border-red-800 h-[100vh]">
+<div className="col-span-5">
 
+      <div className="mx-auto h-[80vh] max-w-7xl grid gap-10 grid-cols-2 overflow-hidden p-10 border border-red-500">
+                          <div>
+                            <p className=" pl-3 text-2xl font-bold ">Pizza - regular</p>
 
-      <div className="mx-auto h-[100vh] max-w-7xl overflow-hidden p-10 grid-cols-2">
-        <p className="mt-20 pl-3 text-2xl font-bold">Pizza - regular</p>
+                            <div className="mx-auto grid grid-cols-2 h-32 items-center">
+                              {regularPizza.map((item) => (
+                                <div
+                                key={item.title}
+                                className="m-3 flex h-32 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5"
+                                onClick={() => addToBasket(item)}
+                                  >
+                                  <p className="pb-2 font-bold">{item.title}</p>
+                                  <p className="pt-4 font-bold">{item.price}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
 
-          <div className="mx-auto grid h-32 grid-cols-3 items-center border-2 border-green-600">
-            {regularPizza.map((item) => (
-              <div
-                key={item.title}
-                className="m-3 flex h-32 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5"
-                onClick={() => addToBasket(item)}
-              >
-                <p className="pb-2 font-bold">{item.title}</p>
-                <p className="pt-4 font-bold">{item.price}</p>
-              </div>
-            ))}
-          </div>
+ 
+                          <div>
+                            <p className="pl-3 text-2xl font-bold">Pizza - Large</p>
+                            <div className="mx-auto grid grid-cols-2 h-32 items-center">
+                            {largePizza.map((item) => (
+                              <div
+                              key={item.title}
+                              className="m-3 flex h-32 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5"
+                              onClick={() => addToBasket(item)}
+                              >
+                                <p className="pb-2 font-bold">{item.title}</p>
+                                <p className="pt-4 font-bold">{item.price}</p>
+                              </div>
+                            ))}
+                            </div>
+                            </div>
+                          </div>
+                        </div>
 
-      {/* <div className="mx-auto grid h-32 grid-cols-3 items-center border-2 border-red-600"> */}
-      <div>
-      <p className="mt-20 pl-3 text-2xl font-bold">Pizza - Large</p>
-          {largePizza.map((item) => (
-            <div
-            key={item.title}
-            className="m-3 flex h-32 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5"
-            onClick={() => addToBasket(item)}
-            >
-              <p className="pb-2 font-bold">{item.title}</p>
-              <p className="pt-4 font-bold">{item.price}</p>
-            </div>
-          ))}
-
-        </div>
-      </div>
-      <div className="mx-auto max-w-7xl p-10">
-        <p className="text-2xl font-bold">Basket</p>
+      <div className="mx-auto max-w-2xl px-2 py-10 col-span-1 h-[80vh] overflow-hidden scroll-smooth">
+        <p className="text-2xl font-bold">Pizza Order</p>
         {basket.length === 0 ? (
           <p>Your basket is empty.</p>
-        ) : (
-          <ul>
+          ) : (
+            <ul>
             {basket.map((item, index) => (
-              <li key={index}>{item.title}{item.price}</li>
-              
-            )
-            )}
+              <li className="py-1" key={index}>
+                {item.title} : {item.price}
+              </li>
+            ))}
           </ul>
         )}
       </div>
     </div>
+            </div>
   );
 }
