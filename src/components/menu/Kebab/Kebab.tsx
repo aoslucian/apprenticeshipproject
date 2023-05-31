@@ -8,9 +8,9 @@ export default function Kebab() {
         Back to Menu
       </Link>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-2 h-[100vh] overflow-hidden p-10 mt-20">
-        <div className="mx-8">
-          <p className="pl-3 text-2xl font-bold">Reg. Kebab</p>
+      <div className="mx-auto grid max-w-7xl grid-cols-2 h-[100vh] gap-10 overflow-hidden p-10 mt-20">
+        <div className="mx-1">
+          <p className=" text-2xl font-bold">Reg. Kebab</p>
           {regularKebab.map((item) => (
             <div
               key={item.title}
@@ -26,8 +26,8 @@ export default function Kebab() {
 
 
 
-          <div className="mx-8">
-            <p className="pl-3 text-2xl font-bold">Large Kebab</p>
+          <div className="mx-1">
+            <p className="text-2xl font-bold">Large Kebab</p>
             {largeKebab.map((item) => (
               <div
                 key={item.title}
