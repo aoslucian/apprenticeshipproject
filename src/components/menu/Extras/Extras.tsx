@@ -1,23 +1,80 @@
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { extras } from "./extras-data";
 
+interface extrasItem {
+  title: string;
+  price: string;
+  alt:string;
+}
+
 export default function Extras() {
+  const [basket, setBasket] = useState<extrasItem[]>([]);
+  const router = useRouter();
+
+  const addToBasket = (item: extrasItem) => {
+    setBasket([...basket, item]);
+  };
+
+  const handleBasketClick = () => {
+    //  eslint-disable-next-line @typescript-eslint/no-floating-promises
+    router.push({
+      pathname: "/basket",
+      query: { items: JSON.stringify(basket) },
+    });
+  };
+
+  console.log(basket);
+
   return (
     <div className="flex flex-col bg-[#333] text-white">
-      <Link className="m-6 text-2xl" href="/new-order">
-        Back to Menu
-      </Link>
-      <div className="mx-auto mt-20 flex h-[100vh] max-w-7xl flex-col overflow-hidden">
-        <p className=" ml-6  text-2xl font-bold">Extras</p>
-        <div className="mx-auto grid cursor-pointer grid-cols-4 items-center ">
-          {extras.map((item) => (
-            <div
-              key={item.title}
-              className="m-6 flex h-20 cursor-pointer items-center justify-center rounded-xl border-2 border-white py-16 px-5"
-            >
-              <p className="font-bold text-xl "> {item.title}</p>
-            </div>
-          ))}
+      <div className="m-6 flex justify-between ">
+        <Link
+          className="ml-3 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
+          href="/new-order"
+        >
+          Back to Menu
+        </Link>
+        <p
+          className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
+          onClick={handleBasketClick}
+        >
+          Basket: {basket.length}
+        </p>
+      </div>
+
+      <div className="mx-auto grid h-full max-w-7xl grid-cols-3 gap-10 overflow-hidden p-10">
+        <div className="col-span-2">
+          <p className=" pl-3 pb-3 text-2xl font-bold ">Extras</p>
+
+          <div className="col-span-2 mx-auto grid h-32 grid-cols-4 items-center">
+            {extras.map((item) => (
+              <div
+                key={item.title}
+                className="m-3 flex h-40 cursor-pointer flex-col items-center text-center justify-center rounded-xl border-2 border-white p-5 ease-in-out hover:border-gray-400 hover:bg-[#222] hover:text-orange-500"
+                onClick={() => addToBasket(item)}
+              >
+                <p className="pt-1 font-bold text-orange-500">{item.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="col-span-1 h-[100vh] overflow-hidden scroll-smooth px-3">
+          <p className="pb-4  text-2xl font-bold">Extras Order</p>
+          {basket.length === 0 ? (
+            <p>Your basket is empty.</p>
+          ) : (
+            <ul>
+              {basket.map((item, index) => (
+                <li className="flex py-1" key={index}>
+                  {item.title}
+                  <li className="pl-1 text-orange-500">{item.price}</li>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>

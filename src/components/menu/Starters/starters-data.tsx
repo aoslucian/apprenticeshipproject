@@ -3,7 +3,7 @@ export const starters = [
       // img: '/images/main/Pizza.webp',
       alt :"cold starter",
       title:"Yaparak Dolma",
-      ingredients:'Vine leaves dtuffed with rice & pine kernels',
+      ingredients:'Vine leaves stuffed with rice & pine kernels',
       price:' £2.20',
     },
     {
