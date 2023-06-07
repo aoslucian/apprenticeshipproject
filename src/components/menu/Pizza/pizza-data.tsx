@@ -79,13 +79,13 @@
 
   export const largePizza = [
     {    
-      // img: '/images/main/Pizza.webp',
-            alt :"pizza",
-            title: "Cheese & Tomato Pizza",
-            ingredients:"Cheese,Tomato",
-            large:'Large 12"',
-            price:'£ 4',
-          },
+  // img: '/images/main/Pizza.webp',
+        alt :"pizza",
+        title: "Cheese & Tomato Pizza",
+        ingredients:"Cheese,Tomato",
+        large:'Large 12"',
+        price:'£ 4',
+      },
       {
         // img: '/images/main/Pizza.webp',
         alt :"pizza",

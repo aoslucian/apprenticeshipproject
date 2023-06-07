@@ -70,7 +70,7 @@ export default function Basket() {
                   <ul className="flex pl-2 text-white">
                     <li>{item.title}</li>
                     <li className="px-2">-</li>
-                    <li className=" text-orange-500">{item.price}</li>
+                    <li className=" text-orange-500">{ item.price}</li>
                   </ul>
                 </ul>
               </li>

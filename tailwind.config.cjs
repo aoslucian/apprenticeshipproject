@@ -8,3 +8,8 @@ const config = {
 };
 
 module.exports = config;
+// module.exports = {
+//   "rules": {
+//     "@typescript-eslint/no-unsafe-assignment": "error"
+//   }
+// };

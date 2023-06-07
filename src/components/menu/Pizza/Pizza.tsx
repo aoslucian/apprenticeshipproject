@@ -49,19 +49,19 @@ export default function Pizza() {
             <div>
               <p className=" pl-3 pb-3 text-2xl font-bold ">Pizza - regular</p>
 
-              <div className="mx-auto grid h-32 grid-cols-2 items-center">
-                {regularPizza.map((item) => (
-                  <div
-                    key={item.title}
-                    className="m-3 flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5 ease-in-out hover:border-gray-400 hover:bg-[#222] hover:text-orange-500"
-                    onClick={() => addToBasket(item)}
-                  >
-                    <p className="pt-1 font-bold text-orange-500">{item.title}</p>
-                    <p className="py-2 font-bold">{item.ingredients}</p>
-                    <p className="pb-1 font-bold text-orange-500">{item.price}</p>
+                  <div className="mx-auto grid h-32 grid-cols-2 items-center">
+                    {regularPizza.map((item) => (
+                      <div
+                        key={item.title}
+                        className="m-3 flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5 ease-in-out hover:border-gray-400 hover:bg-[#222] hover:text-orange-500"
+                        onClick={() => addToBasket(item)}
+                      >
+                        <p className="pt-1 font-bold text-orange-500">{item.title}</p>
+                        <p className="py-2 font-bold">{item.ingredients}</p>
+                        <p className="pb-1 font-bold text-orange-500">{item.price}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
             </div>
 
             <div>
