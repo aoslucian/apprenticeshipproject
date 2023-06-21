@@ -1,7 +1,3 @@
-
-
-
-
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -16,9 +12,10 @@ interface UserNamesItem {
   price: string;
 }
 
+
 export default function ExistingCustomer() {
   const [users, setUsers] = useState<UserNamesItem[]>(userNames);
-  const [randomUser, setRandomUser] = useState<UserNamesItem | null>(null);
+  const [randomUser, setRandomUser] = useState<UserNamesItem | undefined>(undefined);
   const [basket, setBasket] = useState<number>(0);
 
   const router = useRouter();
@@ -34,16 +31,6 @@ export default function ExistingCustomer() {
     setUsers((prevUsers) => prevUsers.filter((user) => user !== selectedUser));
   };
 
-  const handleGetRandomUser = () => {
-    getRandomUser();
-  };
-
-  const handleStartOrder = () => {
-    if (randomUser) {
-      const deliveryPrice = parseFloat(randomUser.price);
-      setBasket((prevBasket) => prevBasket + deliveryPrice);
-    }
-  };
 
   const handleViewBasket = () => {
     if (basket > 0) {
@@ -54,13 +41,17 @@ export default function ExistingCustomer() {
     }
   };
 
+
+  
   return (
     <div className="mx-auto flex min-h-[100vh] flex-col justify-center bg-[#1f2026] align-middle">
-      <div className="mx-auto py-8 w-[600px] justify-self-center bg-[#303133] px-8 align-middle border-2 border-orange-500">
-        <h1 className="pl-2 text-left text-2xl font-normal text-white">Existing customer:</h1>
+      <div className="mx-auto w-[600px] justify-self-center border-2 border-orange-500 bg-[#303133] px-8 py-8 align-middle">
+        <h1 className="pl-2 text-left text-2xl font-normal text-white">
+          Existing customer:
+        </h1>
         {randomUser && (
           <div className="pl-2">
-            <p className="text-orange-500 text-2xl py-2">{randomUser.name}</p>
+            <p className="py-2 text-2xl text-orange-500">{randomUser.name}</p>
             <p className="text-white">{randomUser.tel}</p>
             <p className="text-white">{randomUser.address}</p>
             <p className="text-white">{randomUser.postCode}</p>
@@ -70,29 +61,27 @@ export default function ExistingCustomer() {
         )}
         <div className="mx-[5%] md:mx-3 lg:mx-6"></div>
       </div>
-      <div className="flex justify-center mt-16">
-        {/* <button
-          className="m-10 space-y-4 rounded-lg bg-white text-xl font-bold py-6 px-10"
-          onClick={handleGetRandomUser}
-        >
-          Get Random Customer
-        </button> */}
-        {/* <button
-          className="m-10 space-y-4 rounded-lg bg-white text-xl font-bold py-6 px-10"
-          onClick={handleStartOrder}
-          >
-        View Basket
-        </button> */}
+      <div className="mt-16 flex justify-center">
         <Link
-          className="m-10 space-y-4 rounded-lg bg-white text-xl font-bold py-6 px-10"
+          className="m-10 space-y-4 rounded-lg bg-white px-10 py-6 text-xl font-bold"
           href="/new-order"
           onClick={handleViewBasket}
-          >
-            Start Order
+        >
+          Start Order
         </Link>
-        {/* <Link className="py-4 px-6 bg-green-800 rounded-xl " href="/new-order">Procede</Link> */}
-                     <Link  className="m-10 space-y-4 rounded-lg bg-white text-xl font-bold py-6 px-10" href="/">Quit Order</Link>
+        <Link
+          className="m-10 space-y-4 rounded-lg bg-white px-10 py-6 text-xl font-bold"
+          href="/"
+        >
+          Quit Order
+        </Link>
       </div>
     </div>
   );
 }
+
+
+
+
+
+

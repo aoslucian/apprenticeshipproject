@@ -1,13 +1,13 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
+// import { signIn, signOut, useSession } from "next-auth/react";
 
-import { api } from "~/utils/api";
+// import { api } from "~/utils/api";
 import ExistingCustomer from "../components/menu/ExistingCustomers/ExistingCustomer";
 
 const OldCustomer: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>
