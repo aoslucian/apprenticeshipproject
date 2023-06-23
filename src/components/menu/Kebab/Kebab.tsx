@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -5,7 +6,7 @@ import { largeKebab, regularKebab } from "./kebab-data";
 
 interface KebabItem {
   title: string;
-  price: string;
+  price: number;
 }
 
 export default function Kebab() {
@@ -22,6 +23,17 @@ export default function Kebab() {
       pathname: "/basket",
       query: { items: JSON.stringify(basket) },
     });
+  };
+
+  const getTotalPrice = () => {
+    let total = 0;
+    basket.forEach((item) => {
+      const itemPrice = item.price; 
+      if (!isNaN(itemPrice)) {
+        total += itemPrice;
+      }
+    });
+    return total.toFixed(2);
   };
 
   console.log(basket);
@@ -47,7 +59,7 @@ export default function Kebab() {
         <div className="col-span-2">
           <div className="mx-auto  grid h-[100vh] max-w-5xl grid-cols-2 py-10">
             <div>
-              <p className=" pl-3 pb-3 text-2xl font-bold ">Kebab - regular</p>
+              <p className=" pl-3 pb-3 text-2xl font-bold ">Kebab Regular</p>
 
               <div className=" grid">
                 {regularKebab.map((item) => (
@@ -69,7 +81,7 @@ export default function Kebab() {
             </div>
 
             <div>
-              <p className="pl-3 pb-3 text-2xl font-bold">Kebab - Large</p>
+              <p className="pl-3 pb-3 text-2xl font-bold">Kebab Large</p>
               <div className=" grid">
                 {largeKebab.map((item) => (
                   <div
@@ -96,14 +108,16 @@ export default function Kebab() {
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>
           ) : (
+            <div>
             <ul>
               {basket.map((item, index) => (
                 <li className="flex py-1" key={index}>
-                  {item.title} :{" "}
-                  <li className="pl-1 text-orange-500">{item.price}</li>
+                  {item.title} :
+                  <span className="pl-1 text-orange-500">£{item.price}</span>
                 </li>
               ))}
             </ul>
+         <p className="pt-4 font-bold">Total Price: £{getTotalPrice()}</p></div>
           )}
         </div>
       </div>

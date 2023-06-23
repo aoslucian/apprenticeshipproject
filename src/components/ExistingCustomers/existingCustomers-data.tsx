@@ -5,7 +5,7 @@ export const userNames = [
     address: "456 Maple Avenue, Lakeside",
     postCode: "NY 67890",
     distance: "2 mi",
-    price: "0.90",
+    price: 0.90,
   },
   {
     name: "Jane Porter",
@@ -13,7 +13,7 @@ export const userNames = [
     address: "321 Pine Road, Hillcrest,",
     postCode: "FL 98765",
     distance: "4 mi",
-    price: "1.80",
+    price: 1.80,
   },
   {
     name: "Mark Whitehouse",
@@ -21,7 +21,7 @@ export const userNames = [
     address: "789 Elm Court, Meadowville,",
     postCode: "TX 54321",
     distance: "3 mi",
-    price: "1.35",
+    price: 1.35,
   },
 
   {
@@ -30,7 +30,7 @@ export const userNames = [
     address: "567 Cedar Lane, Woodville,",
     postCode: "GA 23456",
     distance: "5 mi",
-    price: "2.25",
+    price: 2.25,
   },
   {
     name: "Arnold Schwarzenegger",
@@ -38,7 +38,7 @@ export const userNames = [
     address: "890 Birch Street, Riverdale,",
     postCode: "OH 65432",
     distance: "4 mi",
-    price: "1.80",
+    price: 1.80,
   },
   {
     name: "Jane Austen",
@@ -46,7 +46,7 @@ export const userNames = [
     address: "234 Spruce Avenue, Mountainview,",
     postCode: "IL 87654",
     distance: "5 mi",
-    price: "2.25",
+    price: 2.25,
   },
   {
     name: "Joe Schmoe",
@@ -54,7 +54,7 @@ export const userNames = [
     address: "123 Oak Street, Springfield",
     postCode: "CA 12345",
     distance: "1 mi",
-    price: "0.45",
+    price: 0.45,
   },
   {
     name: "Rosa Parks",
@@ -62,7 +62,7 @@ export const userNames = [
     address: "678 Willow Lane, Brookside,",
     postCode: "WA 34567",
     distance: "3 mi",
-    price: "1.35",
+    price: 1.35,
   },
   {
     name: "Anne Frank",
@@ -70,7 +70,7 @@ export const userNames = [
     address: "209 Ash Street, Corkhill,",
     postCode: "CH 54323",
     distance: "2 mi",
-    price: "0.90",
+    price: 0.90,
   },
   {
     name: "Nicolae Ceausescu",
@@ -78,7 +78,7 @@ export const userNames = [
     address: "666 Ash Street, Cimitir,",
     postCode: "FU 66623",
     distance: "2 mi",
-    price: "0.90",
+    price: 0.90,
   },
   {
     name: "Fidel Castro",
@@ -86,6 +86,6 @@ export const userNames = [
     address: "666 Voodoo Street, Crematorium,",
     postCode: "FU 68523",
     distance: "3 mi",
-    price: "1.35",
+    price: 1.35,
   },
 ];

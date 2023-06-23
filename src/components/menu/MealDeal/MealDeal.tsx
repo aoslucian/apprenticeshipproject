@@ -1,33 +1,3 @@
-// import Link from "next/link";
-// import { mealDeal } from "./mealDeal-data";
-
-// export default function MealDeal() {
-//   return (
-//     <div className="flex flex-col bg-[#333] text-white">
-//       <Link className="m-6 text-2xl" href="/new-order">
-//         Back to Menu
-//       </Link>
-
-
-//       <div className="mx-auto max-w-7xl h-[100vh] overflow-hidden py-10 px-6 sm:py-10 lg:px-8">
-//       <p className="font-bold text-2xl ">Meal Deal</p>
-//         {mealDeal.map((item) => (
-//            <div key={item.title} className="pb-6 border-2 border-white cursor-pointer rounded-xl px-5 py-3 my-5 h-32 items-center flex-col">
-//             <p className="text-lg font-bold">{item.title}</p>
-//             <p>{item.ingredients}</p>
-//             <p className="text-lg font-bold"> {item.price} </p>
-      
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-/////////////////////////
-
 
 
 import Link from "next/link";
@@ -37,7 +7,7 @@ import{ mealDeal } from "./mealDeal-data";
 
 interface mealDealItem {
   title: string;
-  price: string;
+  price: number;
 }
 
 export default function MealDeal() {
@@ -54,6 +24,17 @@ export default function MealDeal() {
       pathname: "/basket",
       query: { items: JSON.stringify(basket) },
     });
+  };
+
+  const getTotalPrice = () => {
+    let total = 0;
+    basket.forEach((item) => {
+      const itemPrice = item.price; 
+      if (!isNaN(itemPrice)) {
+        total += itemPrice;
+      }
+    });
+    return total.toFixed(2);
   };
 
   console.log(basket);
@@ -79,7 +60,7 @@ export default function MealDeal() {
         <div className="col-span-4 mx-auto">
           <div className="mx-auto  grid h-[100vh] max-w-7xl overflow-hidden p-10">
             <div>
-              <p className=" pl-3 pb-3 text-2xl font-bold ">Drinks</p>
+              <p className=" pl-3 pb-3 text-2xl font-bold ">Meal Deal</p>
 
               <div className="mx-auto grid items-center">
                 {mealDeal.map((item) => (
@@ -89,7 +70,7 @@ export default function MealDeal() {
                     onClick={() => addToBasket(item)}
                   >
                     <p className="pt-1 font-bold text-orange-500">
-                      {item.title}
+                      {item.title} :
                     </p>
                     <p className="py-1 font-bold">{item.ingredients}</p>
                     <p className="pb-1 font-bold text-orange-500">{item.price}</p>
@@ -101,18 +82,20 @@ export default function MealDeal() {
         </div>
 
         <div className="col-span-1  h-[80vh] overflow-hidden scroll-smooth px-3 py-10">
-          <p className="pb-4 pt-2 text-2xl font-bold">Drinks Order</p>
+          <p className="pb-4 pt-2 text-2xl font-bold">Meal Deal Order</p>
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>
           ) : (
+            <div>
             <ul>
               {basket.map((item, index) => (
                 <li className="flex py-1" key={index}>
-                  {item.title} :{" "}
-                  <li className="pl-1 text-orange-500">{item.price}</li>
+                  {item.title} :
+                 <span className="pl-1 text-orange-500">£{item.price}</span>
                 </li>
               ))}
             </ul>
+              <p className="pt-4 font-bold ">Total Price: £{getTotalPrice()}</p></div>
           )}
         </div>
       </div>

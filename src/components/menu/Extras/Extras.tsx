@@ -5,7 +5,7 @@ import { extras } from "./extras-data";
 
 interface extrasItem {
   title: string;
-  price: string;
+  price: number;
   alt:string;
 }
 
@@ -23,6 +23,17 @@ export default function Extras() {
       pathname: "/basket",
       query: { items: JSON.stringify(basket) },
     });
+  };
+
+  const getTotalPrice = () => {
+    let total = 0;
+    basket.forEach((item) => {
+      const itemPrice = item.price; 
+      if (!isNaN(itemPrice)) {
+        total += itemPrice;
+      }
+    });
+    return total.toFixed(2);
   };
 
   console.log(basket);
@@ -56,6 +67,7 @@ export default function Extras() {
                 onClick={() => addToBasket(item)}
               >
                 <p className="pt-1 font-bold text-orange-500">{item.title}</p>
+                <p className="pb-1 font-bold">{item.price}</p>
               </div>
             ))}
           </div>
@@ -66,14 +78,16 @@ export default function Extras() {
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>
           ) : (
+            <div>
             <ul>
               {basket.map((item, index) => (
                 <li className="flex py-1" key={index}>
-                  {item.title}
-                  <li className="pl-1 text-orange-500">{item.price}</li>
+                  {item.title} :
+                  <span className="pl-1 text-orange-500">£{item.price}</span>
                 </li>
               ))}
             </ul>
+                <p className="pt-4 font-bold">Total Price: £{getTotalPrice()}</p></div>
           )}
         </div>
       </div>

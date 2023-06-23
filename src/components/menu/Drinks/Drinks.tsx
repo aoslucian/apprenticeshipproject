@@ -1,4 +1,9 @@
 
+
+
+
+
+
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -6,7 +11,7 @@ import { drinks } from "./drinks-data";
 
 interface DrinksItem {
   title: string;
-  price: string;
+  price: number;
 }
 
 export default function Drinks() {
@@ -25,11 +30,22 @@ export default function Drinks() {
     });
   };
 
+  const getTotalPrice = () => {
+    let total = 0;
+    basket.forEach((item) => {
+      const itemPrice = item.price; 
+      if (!isNaN(itemPrice)) {
+        total += itemPrice;
+      }
+    });
+    return total.toFixed(2);
+  };
+
   console.log(basket);
 
   return (
     <div className="flex flex-col bg-[#333] text-white">
-      <div className="m-6 flex justify-between ">
+      <div className="m-6 flex justify-between">
         <Link
           className="ml-3 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
           href="/new-order"
@@ -48,7 +64,7 @@ export default function Drinks() {
         <div className="col-span-2 ml-96">
           <div className="mx-auto  grid h-[100vh] max-w-7xl overflow-hidden p-10">
             <div>
-              <p className=" pl-3 pb-3 text-2xl font-bold ">Drinks</p>
+              <p className="pl-3 pb-3 text-2xl font-bold">Drinks</p>
 
               <div className="mx-auto grid grid-cols-2 items-center">
                 {drinks.map((item) => (
@@ -74,14 +90,17 @@ export default function Drinks() {
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>
           ) : (
-            <ul>
-              {basket.map((item, index) => (
-                <li className="flex py-1" key={index}>
-                  {item.title} :{" "}
-                  <li className="pl-1 text-orange-500">{item.price}</li>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <ul>
+                {basket.map((item, index) => (
+                  <li className="flex py-1" key={index}>
+                    {item.title} :{" "}
+                    <span className="pl-1 text-orange-500">£{item.price}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="pt-4 font-bold">Total Price: £{getTotalPrice()}</p>
+            </div>
           )}
         </div>
       </div>

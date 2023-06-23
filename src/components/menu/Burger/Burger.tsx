@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -5,7 +6,7 @@ import { burgers } from "./burger-data";
 
 interface BurgerItem {
   title: string;
-  price: string;
+  price: number;
 }
 
 export default function Burger() {
@@ -24,19 +25,30 @@ export default function Burger() {
     });
   };
 
+  const getTotalPrice = () => {
+    let total = 0;
+    basket.forEach((item) => {
+      const itemPrice = item.price; 
+      if (!isNaN(itemPrice)) {
+        total += itemPrice;
+      }
+    });
+    return total.toFixed(2);
+  };
+
   console.log(basket);
 
   return (
     <div className="flex flex-col bg-[#333] text-white mx-auto">
-      <div className="m-6 flex justify-between ">
+      <div className="m-6 flex justify-between">
         <Link
-          className="ml-3 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
+          className="ml-3 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500 hover:text-orange-500"
           href="/new-order"
         >
           Back to Menu
         </Link>
         <p
-          className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
+          className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500 hover:text-orange-500"
           onClick={handleBasketClick}
         >
           Basket: {basket.length}
@@ -66,14 +78,16 @@ export default function Burger() {
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>
           ) : (
+            <div>
             <ul>
               {basket.map((item, index) => (
                 <li className="flex py-1" key={index}>
-                  {item.title} :{" "}
-                  <li className="pl-1 text-orange-500">{item.price}</li>
+                  {item.title} :
+                  <span className="pl-1 text-orange-500">£{item.price}</span>
                 </li>
               ))}
             </ul>
+         <p className="pt-4 font-bold">Total Price: £{getTotalPrice()}</p></div>
           )}
         </div>
       </div>
