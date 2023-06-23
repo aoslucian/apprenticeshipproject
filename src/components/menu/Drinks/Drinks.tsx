@@ -77,7 +77,7 @@ export default function Drinks() {
                       {item.title}
                     </p>
 
-                    <p className="pb-1 font-bold">{item.price}</p>
+                    <p className="pb-1 font-bold"> £ {item.price}</p>
                   </div>
                 ))}
               </div>

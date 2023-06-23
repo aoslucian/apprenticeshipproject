@@ -68,13 +68,13 @@ export default function KidsMeal() {
               >
                 <p className="pt-1 font-bold text-orange-500">{item.title}</p>
                 <p className="py-2 font-bold">{item.ingredients}</p>
-                <p className="pb-1 font-bold text-orange-500">{item.price}</p>
+                <p className="pb-1 font-bold text-orange-500">£ {item.price}</p>
               </div>
             ))}
           </div>
         </div>
         <div className="col-span-1 h-[100v] px-5 py-10">
-          <p className="pb-4 pt-2 text-2xl font-bold">Kebab Order</p>
+          <p className="pb-4 pt-2 text-2xl font-bold">Kids Meal Order</p>
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>
           ) : (
@@ -83,7 +83,7 @@ export default function KidsMeal() {
               {basket.map((item, index) => (
                 <li className="flex py-1" key={index}>
                   {item.title} :
-                  <span className="pl-1 text-orange-500">£{item.price}</span>
+                  <span className="pl-1 text-orange-500"> £ {item.price}</span>
                 </li>
               ))}
             </ul>

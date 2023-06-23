@@ -67,7 +67,7 @@ export default function Burger() {
                 onClick={() => addToBasket(item)}
               >
                 <p className="pt-1 font-bold text-orange-500">{item.title}</p>
-                <p className="pb-1 font-bold">{item.price}</p>
+                <p className="pb-1 font-bold"> £ {item.price}</p>
               </div>
             ))}
           </div>

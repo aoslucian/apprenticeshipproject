@@ -4,14 +4,14 @@ export const hot = [
       alt :"hot starter",
       title:"Boroek",
       ingredients:'Freshly fried triangles of pastry filled with cheese and herbs',
-      price:2.00,
+      price:2.0,
     },
     {
       // img: '/images/main/Pizza.webp',
       alt :"hot starter",
       title:"Rice",
       ingredients:'Traditional Turkish stile',
-      price:1.70,
+      price:1.7,
     
     },
   ]

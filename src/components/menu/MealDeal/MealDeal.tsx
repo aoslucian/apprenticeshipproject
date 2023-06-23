@@ -73,7 +73,7 @@ export default function MealDeal() {
                       {item.title} :
                     </p>
                     <p className="py-1 font-bold">{item.ingredients}</p>
-                    <p className="pb-1 font-bold text-orange-500">{item.price}</p>
+                    <p className="pb-1 font-bold text-orange-500"> £ {item.price}</p>
                   </div>
                 ))}
               </div>

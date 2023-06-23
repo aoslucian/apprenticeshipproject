@@ -1,5 +1,4 @@
 
-
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -7,7 +6,7 @@ import { starters } from "./starters-data";
 
 interface StartersItem {
   title: string;
-  price: string;
+  price: number;
 }
 
 export  default function Starters() {
@@ -24,6 +23,18 @@ export  default function Starters() {
       pathname: "/basket",
       query: { items: JSON.stringify(basket) },
     });
+  };
+
+
+  const getTotalPrice = () => {
+    let total = 0;
+    basket.forEach((item) => {
+      const itemPrice = item.price; 
+      if (!isNaN(itemPrice)) {
+        total += itemPrice;
+      }
+    });
+    return total.toFixed(2);
   };
 
   console.log(basket);
@@ -58,24 +69,26 @@ export  default function Starters() {
               >
                 <p className="pt-1 font-bold text-orange-500">{item.title}</p>
                 <p className="py-2 font-bold">{item.ingredients}</p>
-                <p className="pb-1 font-bold text-orange-500">{item.price}</p>
+                <p className="pb-1 font-bold text-orange-500">£ {item.price}</p>
               </div>
             ))}
           </div>
         </div>
         <div className="col-span-1 h-[100v] px-5 py-10">
-          <p className="pb-4 pt-2 text-2xl font-bold">Kebab Order</p>
+          <p className="pb-4 pt-2 text-2xl font-bold">Starter Order</p>
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>
           ) : (
+            <div>
             <ul>
               {basket.map((item, index) => (
                 <li className="flex py-1" key={index}>
-                  {item.title} :{" "}
-                  <li className="pl-1 text-orange-500">{item.price}</li>
+                  {item.title} :
+                  <span className="pl-1 text-orange-500">£{item.price}</span>
                 </li>
               ))}
             </ul>
+         <p className="pt-4 font-bold">Total Price: £{getTotalPrice()}</p></div>
           )}
         </div>
       </div>

@@ -73,7 +73,7 @@ export default function Kebab() {
                     </p>
                     <p className="py-2 font-bold">{item.ingredients}</p>
                     <p className="pb-1 font-bold text-orange-500">
-                      {item.price}
+                     £ {item.price}
                     </p>
                   </div>
                 ))}
@@ -94,7 +94,7 @@ export default function Kebab() {
                     </p>
                     <p className="py-2 font-bold">{item.ingredients}</p>
                     <p className="pb-1 font-bold text-orange-500">
-                      {item.price}
+                     £ {item.price}
                     </p>
                   </div>
                 ))}
