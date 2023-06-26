@@ -18,13 +18,15 @@ export default function CustomerOrder() {
 
   const router = useRouter();
 
+
+
   const handleProduceBill = () => {
     void router.push({
       pathname: "/basket",
       query: { items: JSON.stringify(basket) },
     });
   };
-
+  
   const handleBasketClick = () => {
     void router.push({
       pathname: "/basket",
