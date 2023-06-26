@@ -125,6 +125,7 @@ export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
           </ul>
         )}
 
+
         {basketItems.length > 0 && (
           <p className="text-orange-500 font-bold">
             Total Price: <span className="mx-1">£</span>{calculateTotalPrice()} 
