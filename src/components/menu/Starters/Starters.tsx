@@ -52,11 +52,11 @@ export  default function Starters() {
           className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
           onClick={handleBasketClick}
         >
-          Basket: {basket.length}
+        Basket: {basket.length} items, Total value:£{getTotalPrice()}
         </p>
       </div>
 
-      <div className="mx-auto grid h-[100vh] grid-cols-5">
+      <div className="mx-auto grid h-[100vh] grid-cols-4">
         <div className="col-span-3 py-10">
           <p className="pl-3 pb-3 text-2xl font-bold ">Starters</p>
 

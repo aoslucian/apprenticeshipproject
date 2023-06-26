@@ -51,12 +51,12 @@ export default function Kebab() {
           className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
           onClick={handleBasketClick}
         >
-          Basket: {basket.length}
+         Basket: {basket.length} items, Total value:£{getTotalPrice()}
         </p>
       </div>
 
-      <div className="grid h-[100vh] grid-cols-3">
-        <div className="col-span-2">
+      <div className="grid h-[100vh] grid-cols-4">
+        <div className="col-span-3">
           <div className="mx-auto  grid h-[100vh] max-w-5xl grid-cols-2 py-10">
             <div>
               <p className=" pl-3 pb-3 text-2xl font-bold ">Kebab Regular</p>
@@ -82,7 +82,7 @@ export default function Kebab() {
 
             <div>
               <p className="pl-3 pb-3 text-2xl font-bold">Kebab Large</p>
-              <div className=" grid">
+              <div className="grid">
                 {largeKebab.map((item) => (
                   <div
                     key={item.title}

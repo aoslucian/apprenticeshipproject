@@ -5,7 +5,7 @@ import { regularPizza, largePizza } from "./pizza-data";
 
 interface PizzaItem {
   title: string;
-  price: string;
+  price: number;
 }
 
 export default function Pizza() {
@@ -24,6 +24,17 @@ export default function Pizza() {
     });
   };
 
+  const getTotalPrice = () => {
+    let total = 0;
+    basket.forEach((item) => {
+      const itemPrice = item.price; 
+      if (!isNaN(itemPrice)) {
+        total += itemPrice;
+      }
+    });
+    return total.toFixed(2);
+  };
+
   console.log(basket);
 
   return (
@@ -39,7 +50,7 @@ export default function Pizza() {
           className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
           onClick={handleBasketClick}
         >
-          Basket: {basket.length}
+          Basket: {basket.length} items, Total value:£{getTotalPrice()}
         </p>
       </div>
 
@@ -88,14 +99,16 @@ export default function Pizza() {
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>
           ) : (
+            <div>
             <ul>
               {basket.map((item, index) => (
                 <li className="flex py-1" key={index}>
                   {item.title} :{" "}
-                  <li className="pl-1 text-orange-500">{item.price}</li>
+                  <span className="pl-1 text-orange-500">£{item.price}</span>
                 </li>
               ))}
             </ul>
+             <p className="pt-4 font-bold">Total Price: £{getTotalPrice()}</p></div>
           )}
         </div>
       </div>
