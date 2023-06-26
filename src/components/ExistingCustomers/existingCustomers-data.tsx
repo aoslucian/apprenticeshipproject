@@ -75,7 +75,7 @@ export const userNames = [
   {
     name: "Nicolae Ceausescu",
     tel: "07403 278 362",
-    address: "666 Ash Street, Cimitir,",
+    address: "666 Ash Street, Cemetery,",
     postCode: "FU 66623",
     distance: "2 mi",
     price: 0.90,

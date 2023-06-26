@@ -13,16 +13,13 @@ export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
   const router = useRouter();
   const { items } = router.query;
 
-  // Local state for the basket items
   const [basketItems, setBasketItems] = useState<BasketItem[]>([]);
 
   useEffect(() => {
-    // Check if there are items in query params and update the local state
     if (items) {
       const parsedItems: BasketItem[] = JSON.parse(items as string);
       setBasketItems(parsedItems);
     } else {
-      // Retrieve the items from local storage
       const storedItems = localStorage.getItem("basketItems");
       if (storedItems) {
         const parsedItems: BasketItem[] = JSON.parse(storedItems);
@@ -32,7 +29,6 @@ export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
   }, [items]);
 
   useEffect(() => {
-    // Save the basket items to local storage whenever it changes
     localStorage.setItem("basketItems", JSON.stringify(basketItems));
   }, [basketItems]);
 
@@ -82,15 +78,10 @@ export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
   };
 
   const handleGenerateBill = () => {
-    // Clear the basket items from local storage
     localStorage.removeItem("basketItems");
-    // Clear the local state
     setBasketItems([]);
 
-    // Calculate the total price including the delivery price
     const totalPrice = calculateTotalPrice() + deliveryPrice;
-
-    // Perform any logic needed with the total price
     console.log("Total Price (including delivery):", totalPrice);
   };
 
@@ -125,7 +116,7 @@ export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
                   <ul className="flex pl-2 text-white">
                     <li> - </li>
                     <li className="text-orange-500 pl-2">
-                    <span className="mx-1">£</span>{getTotalPrice(basketItems, item)}
+                      <span className="mx-1">£</span>{getTotalPrice(basketItems, item)}
                     </li>
                   </ul>
                 </ul>
@@ -134,17 +125,11 @@ export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
           </ul>
         )}
 
-{basketItems.length > 0 && (
-  <p className="text-orange-500 font-bold">
-    Delivery Price:<span className="mx-1">£</span>{deliveryPrice}
-  </p>
-)}
         {basketItems.length > 0 && (
           <p className="text-orange-500 font-bold">
             Total Price: <span className="mx-1">£</span>{calculateTotalPrice()} 
           </p>
         )}
-
 
         {basketItems.length > 0 && (
           <button
