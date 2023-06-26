@@ -43,7 +43,7 @@ export default function Burger() {
       <div className="m-6 flex justify-between">
         <Link
           className="ml-3 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500 hover:text-orange-500"
-          href="/new-order"
+          href="/customer-order"
         >
           Back to Menu
         </Link>

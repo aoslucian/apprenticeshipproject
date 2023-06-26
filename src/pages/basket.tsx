@@ -90,7 +90,7 @@ export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
       <div className="flex py-10">
         <Link
           className="ml-16 cursor-pointer rounded-xl border-2 border-transparent py-4 px-8 text-2xl hover:border-orange-500  hover:text-orange-500"
-          href="/new-order"
+          href="/customer-order"
         >
           Back to Menu
         </Link>
