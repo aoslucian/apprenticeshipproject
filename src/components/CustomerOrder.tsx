@@ -1,33 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-
-
 interface Item {
-
-  price: number; 
+  price: number;
 }
 
-export default function CustomerOrder() {
-  const [basket, setBasket] = useState<Item[]>([]);
+interface CustomerOrderProps {
+  basket: Item[];
+}
 
+const CustomerOrder: React.FC<CustomerOrderProps> = ({ basket }) => {
+  const [basketItems, setBasketItems] = useState<Item[]>([]);
   const router = useRouter();
 
-
-
   const handleProduceBill = () => {
-    void router.push({
-      pathname: "/basket",
-      query: { items: JSON.stringify(basket) },
-    });
-  };
-  
-  const handleBasketClick = () => {
     void router.push({
       pathname: "/basket",
       query: { items: JSON.stringify(basket) },
@@ -42,8 +31,19 @@ export default function CustomerOrder() {
         total += itemPrice;
       }
     });
-    return total.toFixed(2);
+    return total;
   };
+
+  useEffect(() => {
+    if (basket) {
+      setBasketItems(basket);
+    } else {
+      const storedItems = localStorage.getItem("basketItems");
+      if (storedItems) {
+        setBasketItems(JSON.parse(storedItems));
+      }
+    }
+  }, [basket]);
 
   return (
     <div className="bg-[#1f2026]">
@@ -51,19 +51,19 @@ export default function CustomerOrder() {
         <div className="m-6 flex justify-end">
           <Link
             href="/basket"
-            className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
+            className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500 hover:text-orange-500"
           >
-            Basket: {basket.length} items, Total value: £{getTotalPrice()}
+            Basket: {basketItems.length} items, Total value: £{getTotalPrice()}
           </Link>
         </div>
       </div>
       <div className="align-start mx-auto flex h-[100vh] max-w-3xl flex-col justify-center text-2xl font-bold">
         <div className="flex flex-row justify-between align-top">
-          <Link className="rounded-xl bg-red-600 py-10 px-12" href="/">
+          <Link className="rounded-xl bg-red-600 px-12 py-10" href="/">
             Quit Order
           </Link>
           <button
-            className="rounded-xl bg-red-600 py-10 px-12"
+            className="rounded-xl bg-red-600 px-12 py-10"
             onClick={handleProduceBill}
           >
             Produce Bill
@@ -73,28 +73,28 @@ export default function CustomerOrder() {
         <div className="mt-16 grid grid-cols-3 gap-8 text-center">
           <div className="flex flex-col gap-8">
             <Link
-              className="rounded-xl bg-red-600 py-6 px-8"
+              className="rounded-xl bg-red-600 px-8 py-6"
               href={{
                 pathname: "/pizza",
-                query: { items: JSON.stringify(basket) },
+                query: { items: JSON.stringify(basketItems) },
               }}
             >
               Pizza
             </Link>
             <Link
-              className="rounded-xl bg-orange-600 py-6 px-8"
+              className="rounded-xl bg-orange-600 px-8 py-6"
               href={{
                 pathname: "/burger",
-                query: { items: JSON.stringify(basket) },
+                query: { items: JSON.stringify(basketItems) },
               }}
             >
               Burger
             </Link>
             <Link
-              className="rounded-xl bg-yellow-600 py-6 px-8"
+              className="rounded-xl bg-yellow-600 px-8 py-6"
               href={{
                 pathname: "/starters",
-                query: { items: JSON.stringify(basket) },
+                query: { items: JSON.stringify(basketItems) },
               }}
             >
               Starters
@@ -103,28 +103,28 @@ export default function CustomerOrder() {
 
           <div className="flex flex-col gap-8">
             <Link
-              className="rounded-xl bg-blue-500 py-6 px-8"
+              className="rounded-xl bg-blue-500 px-8 py-6"
               href={{
                 pathname: "/drinks",
-                query: { items: JSON.stringify(basket) },
+                query: { items: JSON.stringify(basketItems) },
               }}
             >
               Drinks
             </Link>
             <Link
-              className="rounded-xl bg-yellow-600 py-6 px-8"
+              className="rounded-xl bg-yellow-600 px-8 py-6"
               href={{
                 pathname: "/kebab",
-                query: { items: JSON.stringify(basket) },
+                query: { items: JSON.stringify(basketItems) },
               }}
             >
               Kebab
             </Link>
             <Link
-              className="rounded-xl bg-green-300 py-6 px-8"
+              className="rounded-xl bg-green-300 px-8 py-6"
               href={{
                 pathname: "/extras",
-                query: { items: JSON.stringify(basket) },
+                query: { items: JSON.stringify(basketItems) },
               }}
             >
               Extras
@@ -133,28 +133,28 @@ export default function CustomerOrder() {
 
           <div className="flex flex-col gap-8">
             <Link
-              className="rounded-xl bg-orange-600 py-6 px-8"
+              className="rounded-xl bg-orange-600 px-8 py-6"
               href={{
                 pathname: "/mealDeal",
-                query: { items: JSON.stringify(basket) },
+                query: { items: JSON.stringify(basketItems) },
               }}
             >
               Meal deals
             </Link>
             <Link
-              className="rounded-xl bg-green-600 py-6 px-8"
+              className="rounded-xl bg-green-600 px-8 py-6"
               href={{
                 pathname: "/kidsMeal",
-                query: { items: JSON.stringify(basket) },
+                query: { items: JSON.stringify(basketItems) },
               }}
             >
               Kids Meal
             </Link>
             <Link
-              className="rounded-xl bg-red-600 py-6 px-8"
+              className="rounded-xl bg-red-600 px-8 py-6"
               href={{
                 pathname: "/hot",
-                query: { items: JSON.stringify(basket) },
+                query: { items: JSON.stringify(basketItems) },
               }}
             >
               Hot
@@ -164,4 +164,6 @@ export default function CustomerOrder() {
       </div>
     </div>
   );
-}
+};
+
+export default CustomerOrder;

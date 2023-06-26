@@ -62,6 +62,13 @@ const ExistingCustomer = () => {
     });
   };
 
+  // const handleStartOrder = () => {
+  //   void router.push({
+  //     pathname: "/customer-order",
+  //     query: { basket: JSON.stringify(basket) },
+  //   });
+  // };
+
   const handleStartOrder = () => {
     void router.push({
       pathname: "/customer-order",

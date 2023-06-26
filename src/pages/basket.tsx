@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 interface BasketItem {
   title: string;
   price: number;
+
 }
 
 export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
