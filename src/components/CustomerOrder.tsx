@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { SlBasket } from "react-icons/sl";
 
 interface Item {
   price: number;
@@ -51,9 +52,9 @@ const CustomerOrder: React.FC<CustomerOrderProps> = ({ basket }) => {
         <div className="m-6 flex justify-end">
           <Link
             href="/basket"
-            className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500 hover:text-orange-500"
+            className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500 hover:text-orange-500 flex"
           >
-            Basket: {basketItems.length} items, Total value: £{getTotalPrice()}
+             <SlBasket className="mr-2 h-7"/> Items: {basket.length} , Value:£{getTotalPrice()}
           </Link>
         </div>
       </div>

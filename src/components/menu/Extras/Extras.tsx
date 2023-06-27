@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { extras } from "./extras-data";
+import { SlBasket } from "react-icons/sl";
 
 interface extrasItem {
   title: string;
@@ -51,7 +52,7 @@ export default function Extras() {
           className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
           onClick={handleBasketClick}
         >
-          Basket: {basket.length} items, Total: £{getTotalPrice()} (Delivery included)
+            <SlBasket/>: {basket.length} items, Total value:£{getTotalPrice()}
         </p>
       </div>
 

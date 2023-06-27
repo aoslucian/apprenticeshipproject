@@ -22,7 +22,6 @@ const Home: NextPage = () => {
       </Head>
         
         <Till />
-    
     </>
   );
 };

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { kidsMeal } from "./kidsMeal-data";
+import { SlBasket } from "react-icons/sl";
 
 interface kidsMealItem {
   title: string;
@@ -51,7 +52,7 @@ export default function KidsMeal() {
           className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
           onClick={handleBasketClick}
         >
-          Basket: {basket.length} items, Total value:£{getTotalPrice()}
+    <SlBasket/>: {basket.length} items, Total value:£{getTotalPrice()}
         </p>
       </div>
 
