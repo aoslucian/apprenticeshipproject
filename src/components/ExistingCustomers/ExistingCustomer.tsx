@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { userNames } from "./existingCustomers-data";
+import { SlBasket } from "react-icons/sl";
 
 interface UserNamesItem {
   name: string;
@@ -62,12 +63,6 @@ const ExistingCustomer = () => {
     });
   };
 
-  // const handleStartOrder = () => {
-  //   void router.push({
-  //     pathname: "/customer-order",
-  //     query: { basket: JSON.stringify(basket) },
-  //   });
-  // };
 
   const handleStartOrder = () => {
     void router.push({
@@ -89,7 +84,7 @@ const ExistingCustomer = () => {
 
   useEffect(() => {
     if (randomUser) {
-      const updatedBasket = [...basket, { ...randomUser, deliveryPrice: randomUser.price }];
+      const updatedBasket = [...basket, { ...randomUser, deliveryPrice: randomUser.price}];
       setBasket(updatedBasket);
     }
   }, [randomUser]);
@@ -100,10 +95,10 @@ const ExistingCustomer = () => {
       <div className="flex flex-col bg-[#1f2026] text-white">
         <div className="m-6 flex justify-end">
           <p
-            className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
+            className="flex mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
             onClick={handleBasketClick}
           >
-            Basket: {basket.length} items, Total value: £{getTotalPrice()}
+        <SlBasket className="mr-2 h-7"/> Items: {basket.length} , Value:£{getTotalPrice()}
           </p>
         </div>
       </div>

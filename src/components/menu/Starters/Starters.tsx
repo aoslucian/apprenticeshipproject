@@ -50,10 +50,10 @@ export  default function Starters() {
           Back to Menu
         </Link>
         <p
-          className="mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
+          className="flex mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
           onClick={handleBasketClick}
         >
-        <SlBasket/>: {basket.length} items, Total value:£{getTotalPrice()}
+ <SlBasket className="mr-2 h-7"/> Items: {basket.length} , Value:£{getTotalPrice()}
         </p>
       </div>
 
