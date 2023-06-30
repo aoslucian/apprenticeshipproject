@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-  ],
+, "src/components/CustomerForm"  ],
   "exclude": ["node_modules"]
 }
