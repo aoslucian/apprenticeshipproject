@@ -231,7 +231,7 @@ export default function CustomerForm() {
 
           <textarea
             id="result"
-            className="rounded-2xl border-2 pb-5 text-black shadow-lg hover:bg-gray-300 mb-8"
+            className="mb-8 rounded-2xl border-2 pb-5 text-black shadow-lg hover:bg-gray-300"
             rows={7}
             value={resultTemplate}
             readOnly
