@@ -16,12 +16,12 @@ export const template = [
   export const dropDown = [
     {
       id: "customer",
-      text: "Customer from the 5mi arrea",
+      text: "Customer from the 5mi area",
       href: "https:",
     },
     {
         id: "customer",
-        text: "Customer from outside of the 5mi arrea",
+        text: "Customer from outside of the 5mi area",
         href: "https:",
       },
     ]
