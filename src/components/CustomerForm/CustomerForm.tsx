@@ -1,3 +1,5 @@
+
+import Link from "next/link";
 import { dropDown, template } from "./customerForma-data";
 import { useState, type MouseEvent, type ChangeEvent, useEffect } from "react";
 
@@ -131,7 +133,7 @@ export default function CustomerForm() {
               <input
                 type="text"
                 id="nameInput"
-                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-600 shadow-lg hover:bg-gray-300"
+                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-500 shadow-lg hover:bg-gray-300"
                 name="nameInput"
                 value={inputValues.nameInput}
                 onChange={handleChange}
@@ -146,7 +148,7 @@ export default function CustomerForm() {
                 type="text"
                 id="telephoneInput"
                 name="telephoneInput"
-                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-600 shadow-lg hover:bg-gray-300"
+                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-500 shadow-lg hover:bg-gray-300"
                 value={inputValues.telephoneInput}
                 onChange={handleChange}
               />
@@ -162,7 +164,7 @@ export default function CustomerForm() {
                 type="text"
                 id="addressInput"
                 name="addressInput"
-                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-600 shadow-lg hover:bg-gray-300"
+                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-500 shadow-lg hover:bg-gray-300"
                 value={inputValues.addressInput}
                 onChange={handleChange}
               />
@@ -176,7 +178,7 @@ export default function CustomerForm() {
                 type="text"
                 id="postCodeInput"
                 name="postCodeInput"
-                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-600 shadow-lg hover:bg-gray-300"
+                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-500 shadow-lg hover:bg-gray-300"
                 value={inputValues.postCodeInput}
                 onChange={handleChange}
               />
@@ -193,7 +195,7 @@ export default function CustomerForm() {
                 id="distanceInput"
                 name="distanceInput"
                 placeholder="Distance in mi"
-                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-600 shadow-lg hover:bg-gray-300"
+                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-500 shadow-lg hover:bg-gray-300"
                 value={inputValues.distanceInput}
                 onChange={handleChange}
               />
@@ -206,7 +208,7 @@ export default function CustomerForm() {
                 type="text"
                 id="priceInput"
                 name="priceInput"
-                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-600 shadow-lg hover:bg-gray-300"
+                className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-500 shadow-lg hover:bg-gray-300"
                 value={inputValues.priceInput}
                 onChange={handleChange}
               />
@@ -220,13 +222,13 @@ export default function CustomerForm() {
             >
               SUBMIT DATA
             </button>
-
-            <button
+            <Link
+             href="/customer-order"
               className="m-1 mr-4 rounded-2xl border-2 border-orange-600 bg-white px-5 py-1 text-sm hover:shadow-xl"
               onClick={handleCopyClick}
             >
               SAVE CUSTOMER
-            </button>
+            </Link>
           </div>
 
           <textarea
@@ -241,3 +243,4 @@ export default function CustomerForm() {
     </div>
   );
 }
+  

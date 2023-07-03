@@ -55,39 +55,39 @@ export default function Pizza() {
         </p>
       </div>
 
-      <div className="grid h-[100vh] grid-cols-8">
+      <div className="grid  grid-cols-8">
         <div className="col-span-6">
-          <div className="mx-auto grid h-[100vh] max-w-7xl grid-cols-2 gap-10 overflow-hidden p-10">
+          <div className="mx-auto grid h-[100vh] max-w-7xl grid-cols-2 gap-4 overflow-hidden px-8">
             <div>
-              <p className=" pl-3 pb-3 text-2xl font-bold ">Pizza - regular</p>
+              <p className=" pl-3 text-2xl font-bold ">Pizza - regular</p>
 
                   <div className="mx-auto grid h-32 grid-cols-2 items-center">
                     {regularPizza.map((item) => (
                       <div
                         key={item.title}
-                        className="m-3 flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5 ease-in-out hover:border-gray-400 hover:bg-[#222] hover:text-orange-500"
+                        className="m-3 flex h-32 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5 ease-in-out hover:border-gray-400 hover:bg-[#222] hover:text-orange-500"
                         onClick={() => addToBasket(item)}
                       >
                         <p className="pt-1 font-bold text-orange-500">{item.title}</p>
-                        <p className="py-2 font-bold">{item.ingredients}</p>
-                        <p className="pb-1 font-bold text-orange-500">{item.price}</p>
+                        <p className="py-2 font-bold text-xs">{item.ingredients}</p>
+                        <p className="pb-1 font-bold text-orange-500">£ {item.price}</p>
                       </div>
                     ))}
                   </div>
             </div>
 
             <div>
-              <p className="pl-3 pb-3 text-2xl font-bold">Pizza - Large</p>
+              <p className="pl-3 text-2xl font-bold">Pizza - Large</p>
               <div className="mx-auto grid h-32 grid-cols-2 items-center">
                 {largePizza.map((item) => (
                   <div
                     key={item.title}
-                    className="m-3 flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5 ease-in-out hover:border-gray-400 hover:bg-[#222] hover:text-orange-500"
+                    className="m-3 flex h-32 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-white p-5 ease-in-out hover:border-gray-400 hover:bg-[#222] hover:text-orange-500"
                     onClick={() => addToBasket(item)}
                   >
                   <p className="pt-1 font-bold text-orange-500">{item.title}</p>
-                    <p className="py-2 font-bold">{item.ingredients}</p>
-                    <p className="pb-1 font-bold text-orange-500">{item.price}</p>
+                    <p className="py-2 font-bold text-xs">{item.ingredients}</p>
+                    <p className="pb-1 font-bold text-orange-500">£ {item.price}</p>
                   </div>
                 ))}
               </div>
@@ -95,7 +95,7 @@ export default function Pizza() {
           </div>
         </div>
 
-        <div className="col-span-2 h-[100vh] overflow-hidden scroll-smooth px-3 py-10">
+        <div className="col-span-2 overflow-hidden scroll-smooth px-3 py-10">
           <p className="pb-4 pt-2 text-2xl font-bold">Pizza Order</p>
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>

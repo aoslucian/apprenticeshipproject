@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { userNames } from "./existingCustomers-data";
 import { SlBasket } from "react-icons/sl";
+import React, { createContext } from "react";
 
 interface UserNamesItem {
   name: string;
@@ -104,7 +105,7 @@ const ExistingCustomer = () => {
       </div>
 
       <div className="mx-auto flex min-h-[100vh] flex-col justify-center bg-[#1f2026] align-middle">
-        <div className="mx-auto w-[600px] justify-self-center border-2 border-orange-500 bg-[#303133] px-8 py-8 align-middle">
+        <div className="mx-auto w-[600px] justify-self-center border-2 border-orange-500 bg-[#303133] px-8 py-8 align-middle rounded-xl">
           <h1 className="pl-2 text-left text-2xl font-normal text-white">Existing customer:</h1>
           {randomUser && (
             <div className="pl-2">
@@ -120,15 +121,15 @@ const ExistingCustomer = () => {
         </div>
         <div className="mt-16 flex justify-center">
           <Link
-            className="m-10 space-y-4 rounded-lg bg-white px-10 py-6 text-xl font-bold"
+            className="m-10 space-y-4 rounded-lg px-8 py-6 text-xl font-bold border-2 border-red-500 bg-red-500 text-white hover:bg-white hover:text-black"
             onClick={handleStartOrder}
             href="/customer-order"
           >
             Start Order
           </Link>
-
-          
-          <Link className="m-10 space-y-4 rounded-lg bg-white px-10 py-6 text-xl font-bold" href="/">
+          <Link
+             className="m-10 space-y-4 rounded-lg px-8 py-6 text-xl font-bold border-2 border-red-500 bg-red-500 text-white hover:bg-white hover:text-black"
+             href="/">
             Quit Order
           </Link>
         </div>
