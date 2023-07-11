@@ -2,7 +2,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { api } from "~/utils/api";
-import CustomerOrder from "~/components/CustomerOrder";
+import CustomerOrder from "~/components/CustomerOrder/CustomerOrder";
 import React from "react";
 import { useRouter } from "next/router";
 
@@ -14,8 +14,9 @@ interface Item {
 
 
 const NewOrder: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+
   const router = useRouter();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { basket } = router.query;
   const basketData: Item[] = [];
 

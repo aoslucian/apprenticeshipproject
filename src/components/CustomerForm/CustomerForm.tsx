@@ -121,6 +121,7 @@ export default function CustomerForm() {
                 <option key={item.text} value={item.id}>
                   {item.text}
                 </option>
+                
               ))}
             </select>
           </div>
@@ -145,7 +146,7 @@ export default function CustomerForm() {
                 TELEPHONE:
               </label>
               <input
-                type="text"
+                type="number"
                 id="telephoneInput"
                 name="telephoneInput"
                 className="mb-2 w-60 items-center rounded-xl border-2 px-4 py-2 text-orange-500 shadow-lg hover:bg-gray-300"

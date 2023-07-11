@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 import Link from "next/link";
-import { useState } from "react";
+import { useContext} from "react";
 import { useRouter } from "next/router";
 import { largeKebab, regularKebab } from "./kebab-data";
 import { SlBasket } from "react-icons/sl";
+import { MyAppContext } from "~/pages/MyAppContext";
 
 interface KebabItem {
   title: string;
@@ -11,7 +15,7 @@ interface KebabItem {
 }
 
 export default function Kebab() {
-  const [basket, setBasket] = useState<KebabItem[]>([]);
+  const {basket, setBasket} = useContext(MyAppContext);
   const router = useRouter();
 
   const addToBasket = (item: KebabItem) => {
@@ -28,7 +32,7 @@ export default function Kebab() {
 
   const getTotalPrice = () => {
     let total = 0;
-    basket.forEach((item) => {
+    basket.forEach((item: {price: number}) => {
       const itemPrice = item.price; 
       if (!isNaN(itemPrice)) {
         total += itemPrice;
@@ -111,7 +115,7 @@ export default function Kebab() {
           ) : (
             <div>
             <ul>
-              {basket.map((item, index) => (
+              {basket.map((item: KebabItem, index: React.Key |null |undefined) => (
                 <li className="flex py-1" key={index}>
                   {item.title} :
                   <span className="pl-1 text-orange-500">£{item.price}</span>

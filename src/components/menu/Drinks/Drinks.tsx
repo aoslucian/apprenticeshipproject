@@ -1,9 +1,12 @@
-
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { drinks } from "./drinks-data";
 import { SlBasket } from "react-icons/sl";
+import React, { useContext } from "react";
+import { MyAppContext } from "../../../pages/MyAppContext";
 
 interface DrinksItem {
   title: string;
@@ -11,7 +14,8 @@ interface DrinksItem {
 }
 
 export default function Drinks() {
-  const [basket, setBasket] = useState<DrinksItem[]>([]);
+
+  const { basket, setBasket } = useContext(MyAppContext);
   const router = useRouter();
 
   const addToBasket = (item: DrinksItem) => {
@@ -28,16 +32,14 @@ export default function Drinks() {
 
   const getTotalPrice = () => {
     let total = 0;
-    basket.forEach((item) => {
-      const itemPrice = item.price; 
+    basket.forEach((item: { price: number }) => {
+      const itemPrice = item.price;
       if (!isNaN(itemPrice)) {
         total += itemPrice;
       }
     });
     return total.toFixed(2);
   };
-
-  console.log(basket);
 
   return (
     <div className="flex flex-col bg-[#333] text-white">
@@ -49,10 +51,11 @@ export default function Drinks() {
           Back to Menu
         </Link>
         <p
-          className="flex mr-5 cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
+          className="mr-5 flex cursor-pointer rounded-xl border-2 border-transparent p-2 px-4 text-2xl hover:border-orange-500  hover:text-orange-500"
           onClick={handleBasketClick}
         >
-    <SlBasket className="mr-2 h-7"/> Items: {basket.length} , Value:£{getTotalPrice()}
+          <SlBasket className="mr-2 h-7" /> Items: {basket.length} , Value:£
+          {getTotalPrice()}
         </p>
       </div>
 
@@ -60,7 +63,7 @@ export default function Drinks() {
         <div className="col-span-2 ml-96">
           <div className="mx-auto  grid h-[100vh] max-w-7xl overflow-hidden p-10">
             <div>
-              <p className="pl-3 pb-3 text-2xl font-bold">Drinks</p>
+              <p className="pb-3 pl-3 text-2xl font-bold">Drinks</p>
 
               <div className="mx-auto grid grid-cols-2 items-center">
                 {drinks.map((item) => (
@@ -88,7 +91,7 @@ export default function Drinks() {
           ) : (
             <div>
               <ul>
-                {basket.map((item, index) => (
+                {basket.map((item : DrinksItem, index: React.Key |null | undefined) => (
                   <li className="flex py-1" key={index}>
                     {item.title} :{" "}
                     <span className="pl-1 text-orange-500">£{item.price}</span>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+
 export default function Till() {
   return (
     <div className="flex min-h-[100vh] flex-col justify-center align-middle bg-[#1f2026] ">
@@ -25,5 +26,4 @@ export default function Till() {
     </div>
   );
 }
-
 

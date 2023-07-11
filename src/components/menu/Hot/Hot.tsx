@@ -1,21 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { hot } from "./hot-data";
 import { SlBasket } from "react-icons/sl";
+import React, { useContext } from "react";
+import { MyAppContext } from "../../../pages/MyAppContext";
 
-interface hotItem {
+interface HotItem {
   title: string;
   price: number;
   alt: string;
 }
 
 export default function Hot() {
-  const [basket, setBasket] = useState<hotItem[]>([]);
+  const {basket, setBasket} = useContext(MyAppContext);
   const router = useRouter();
 
-  const addToBasket = (item: hotItem) => {
+  const addToBasket = (item: HotItem) => {
     setBasket([...basket, item]);
   };
 
@@ -29,7 +32,7 @@ export default function Hot() {
 
   const getTotalPrice = () => {
     let total = 0;
-    basket.forEach((item) => {
+    basket.forEach((item:{price:number}) => {
       const itemPrice = item.price;
       if (!isNaN(itemPrice)) {
         total += itemPrice;
@@ -86,7 +89,7 @@ export default function Hot() {
           ) : (
             <div>
               <ul>
-                {basket.map((item, index) => (
+                {basket.map((item: HotItem, index: React.Key | null | undefined) => (
                   <li className="flex py-1" key={index}>
                     {item.title} :
                     <span className="pl-1 text-orange-500">£{item.price}</span>

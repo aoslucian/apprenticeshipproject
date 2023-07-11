@@ -13,7 +13,6 @@ import Hot from "~/components/menu/Hot/Hot";
 
 
 const OldCustomer: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>

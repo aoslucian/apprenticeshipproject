@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 import Link from "next/link";
-import { useState } from "react";
+import {useContext} from "react"
 import { useRouter } from "next/router";
 import { regularPizza, largePizza } from "./pizza-data";
 import { SlBasket } from "react-icons/sl";
+import { MyAppContext } from "../../../pages/MyAppContext";
 
 interface PizzaItem {
   title: string;
@@ -10,7 +15,7 @@ interface PizzaItem {
 }
 
 export default function Pizza() {
-  const [basket, setBasket] = useState<PizzaItem[]>([]);
+  const {basket, setBasket} = useContext(MyAppContext)
   const router = useRouter();
 
   const addToBasket = (item: PizzaItem) => {
@@ -27,7 +32,7 @@ export default function Pizza() {
 
   const getTotalPrice = () => {
     let total = 0;
-    basket.forEach((item) => {
+    basket.forEach((item: {price : number}) => {
       const itemPrice = item.price; 
       if (!isNaN(itemPrice)) {
         total += itemPrice;
@@ -57,9 +62,9 @@ export default function Pizza() {
 
       <div className="grid  grid-cols-8">
         <div className="col-span-6">
-          <div className="mx-auto grid h-[100vh] max-w-7xl grid-cols-2 gap-4 overflow-hidden px-8">
+          <div className="mx-auto grid h-[100vh] max-w-7xl grid-cols-2 gap-4 overflow-hidden px-8 mt-20">
             <div>
-              <p className=" pl-3 text-2xl font-bold ">Pizza - regular</p>
+              <p className=" pl-3 text-2xl font-bold ">Pizza - Regular</p>
 
                   <div className="mx-auto grid h-32 grid-cols-2 items-center">
                     {regularPizza.map((item) => (
@@ -95,14 +100,14 @@ export default function Pizza() {
           </div>
         </div>
 
-        <div className="col-span-2 overflow-hidden scroll-smooth px-3 py-10">
+        <div className="col-span-2 overflow-hidden scroll-smooth px-3 py-20">
           <p className="pb-4 pt-2 text-2xl font-bold">Pizza Order</p>
           {basket.length === 0 ? (
             <p>Your basket is empty.</p>
           ) : (
             <div>
             <ul>
-              {basket.map((item, index) => (
+              {basket.map((item: PizzaItem, index: React.Key | null | undefined) => (
                 <li className="flex py-1" key={index}>
                   {item.title} :{" "}
                   <span className="pl-1 text-orange-500">£{item.price}</span>

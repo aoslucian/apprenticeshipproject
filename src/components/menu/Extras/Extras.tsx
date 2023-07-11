@@ -1,20 +1,25 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { extras } from "./extras-data";
 import { SlBasket } from "react-icons/sl";
+import  { useContext } from "react";
+import { MyAppContext } from "../../../pages/MyAppContext";
 
-interface extrasItem {
+interface ExtrasItem {
   title: string;
   price: number;
   alt:string;
 }
 
 export default function Extras() {
-  const [basket, setBasket] = useState<extrasItem[]>([]);
+  const {basket, setBasket} = useContext(MyAppContext);
   const router = useRouter();
 
-  const addToBasket = (item: extrasItem) => {
+  const addToBasket = (item: ExtrasItem) => {
     setBasket([...basket, item]);
   };
 
@@ -28,7 +33,7 @@ export default function Extras() {
 
   const getTotalPrice = () => {
     let total = 0;
-    basket.forEach((item) => {
+    basket.forEach((item:{ price : number}) => {
       const itemPrice = item.price; 
       if (!isNaN(itemPrice)) {
         total += itemPrice;
@@ -36,8 +41,6 @@ export default function Extras() {
     });
     return total.toFixed(2);
   };
-
-  console.log(basket);
 
   return (
     <div className="flex flex-col bg-[#333] text-white">
@@ -81,7 +84,7 @@ export default function Extras() {
           ) : (
             <div>
             <ul>
-              {basket.map((item, index) => (
+              {basket.map((item: ExtrasItem, index: React.Key | null | undefined) => (
                 <li className="flex py-1" key={index}>
                   {item.title} :
                   <span className="pl-1 text-orange-500">£{item.price}</span>

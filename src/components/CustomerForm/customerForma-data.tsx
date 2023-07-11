@@ -1,5 +1,5 @@
 export const template = [
-    {
+  {
     id: "customer",
     result: `
     name: "nameInput",
@@ -8,20 +8,23 @@ export const template = [
     postCode: "postCodeInput",
     distance: "distanceInput",
     price: priceInput`,
-    },
-]
+  },
+];
 
-
-
-  export const dropDown = [
-    {
-      id: "customer",
-      text: "Customer from the 5mi area",
-      href: "https:",
-    },
-    {
-        id: "customer",
-        text: "Customer from outside of the 5mi area",
-        href: "https:",
-      },
-    ]
+export const dropDown = [
+  {
+    id: "customer",
+    text: "",
+ 
+  },
+  {
+    id: "customer",
+    text: "Customer from the City",
+ 
+  },
+  {
+    id: "customer",
+    text: "Customer from outside the City",
+ 
+  },
+];

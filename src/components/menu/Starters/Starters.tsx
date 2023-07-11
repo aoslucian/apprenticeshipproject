@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
 import Link from "next/link";
-import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter} from "next/router"
+import { useContext } from "react";
 import { starters } from "./starters-data";
 import { SlBasket } from "react-icons/sl";
+import { MyAppContext } from "~/pages/MyAppContext";
 
 interface StartersItem {
   title: string;
@@ -11,7 +15,7 @@ interface StartersItem {
 }
 
 export  default function Starters() {
-  const [basket, setBasket] = useState<StartersItem[]>([]);
+  const {basket, setBasket} = useContext(MyAppContext)
   const router = useRouter();
 
   const addToBasket = (item: StartersItem) => {
@@ -29,7 +33,7 @@ export  default function Starters() {
 
   const getTotalPrice = () => {
     let total = 0;
-    basket.forEach((item) => {
+    basket.forEach((item: {price : number}) => {
       const itemPrice = item.price; 
       if (!isNaN(itemPrice)) {
         total += itemPrice;
@@ -82,7 +86,7 @@ export  default function Starters() {
           ) : (
             <div>
             <ul>
-              {basket.map((item, index) => (
+              {basket.map((item: StartersItem, index : React.Key | null | undefined) => (
                 <li className="flex py-1" key={index}>
                   {item.title} :
                   <span className="pl-1 text-orange-500">£{item.price}</span>
