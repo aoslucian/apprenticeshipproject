@@ -152,7 +152,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { userNames } from "./existingCustomers-data";
 import { SlBasket } from "react-icons/sl";
-import React, {useContext} from "react";
+// import {useContext} from "react";
+import { MyAppContext } from "../../pages/MyAppContext";
 
 interface UserNamesItem {
   name: string;
@@ -188,6 +189,7 @@ const useRandomUser = (users: UserNamesItem[]): [UserNamesItem | undefined, () =
 const ExistingCustomer = () => {
   const [users, setUsers] = useState<UserNamesItem[]>(userNames);
   const [basket, setBasket] = useState<BasketItem[]>([]);
+  // const { basket, setBasket} = useContext(MyAppContext)
   const [randomUser, getRandomUser] = useRandomUser(users);
 
   const router = useRouter();

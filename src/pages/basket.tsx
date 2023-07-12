@@ -149,8 +149,9 @@
 
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import { MyAppContext } from "./MyAppContext";
 
 interface BasketItem {
   title: string;
@@ -159,12 +160,12 @@ interface BasketItem {
 
 
 
-
 export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
   const router = useRouter();
   const { items } = router.query;
 
   const [basketItems, setBasketItems] = useState<BasketItem[]>([]);
+  const { basket, setBasket } = useContext(MyAppContext);
 
   useEffect(() => {
     if (items) {
@@ -281,19 +282,6 @@ export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
             Total Price: <span className="mx-1">£</span>{calculateTotalPrice()} 
           </p>
         )}
-
-        {/* {basketItems.length > 0 && (
-          <div>
-            <p className="text-orange-500 font-bold">Contents of the Basket:</p>
-            <ul>
-              {basketItems.map((item, index) => (
-                <li key={index}>
-                  {item.title} - £{item.price}
-                </li>
-              ))}
-            </ul>
-          </div> */}
-        {/* )} */}
 
         {basketItems.length > 0 && (
           <button

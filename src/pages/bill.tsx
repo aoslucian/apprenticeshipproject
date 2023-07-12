@@ -4,7 +4,7 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
-import CustomerOrder from "~/components/CustomerOrder";
+import CustomerOrder from "~/components/CustomerOrder/CustomerOrder";
 
 
 
