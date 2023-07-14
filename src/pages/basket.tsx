@@ -1,21 +1,27 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
+
+
+ 
+
+
 // import Link from "next/link";
-// import { useState, useEffect } from "react";
+// import { useState, useEffect, useContext } from "react";
 // import { useRouter } from "next/router";
+// import { MyAppContext } from "./MyAppContext";
 
 // interface BasketItem {
 //   title: string;
 //   price: number;
-
 // }
+
 
 // export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {
 //   const router = useRouter();
 //   const { items } = router.query;
 
 //   const [basketItems, setBasketItems] = useState<BasketItem[]>([]);
+//   const { basket, setBasket } = useContext(MyAppContext);
 
 //   useEffect(() => {
 //     if (items) {
@@ -90,12 +96,12 @@
 //   return (
 //     <div className="h-[100vh] bg-[#333] text-white">
 //       <div className="flex py-10">
-//         <Link
-//           className="ml-16 cursor-pointer rounded-xl border-2 border-transparent py-4 px-8 text-2xl hover:border-orange-500  hover:text-orange-500"
-//           href="/customer-order"
-//         >
-//           Back to Menu
-//         </Link>
+//       <Link
+//          className="ml-16 cursor-pointer rounded-xl border-2 border-transparent py-4 px-8 text-2xl hover:border-orange-500  hover:text-orange-500"
+//            href="/customer-order"
+//          >
+//            Back to Menu
+//       </Link>
 //       </div>
 
 //       <p className="ml-24 py-8 text-2xl">Basket :</p>
@@ -127,7 +133,6 @@
 //           </ul>
 //         )}
 
-
 //         {basketItems.length > 0 && (
 //           <p className="text-orange-500 font-bold">
 //             Total Price: <span className="mx-1">£</span>{calculateTotalPrice()} 
@@ -148,6 +153,47 @@
 // }
 
 
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
@@ -157,7 +203,6 @@ interface BasketItem {
   title: string;
   price: number;
 }
-
 
 
 export default function Basket({ deliveryPrice }: { deliveryPrice: number }) {

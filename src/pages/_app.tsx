@@ -1,7 +1,7 @@
 import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-// import React, { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import { MyAppProvider } from "./MyAppContext";
 
 import { api } from "~/utils/api";
